@@ -7,10 +7,10 @@
         </mt-swipe>
         <ul class="mui-table-view mui-grid-view mui-grid-9">
             <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-                <a href="#">
+                <router-link to="/home/newsList">
                     <img src="../../images/menu1.png"/>
                     <div class="mui-media-body">新闻资讯</div>
-                </a>
+                </router-link>
             </li>
             <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
                 <a href="#">
@@ -60,7 +60,7 @@
         },
         methods: {
             init() {
-                this.$http.get("http://localhost:8080/vue-cms/getLunbotu").then((response) => {
+                this.$http.get("vue-cms/getLunbotu").then((response) => {
                     let data = response.data
                     if (data.status === '0') {
                         this.lunbotuList = data.message
