@@ -2,14 +2,14 @@
     <div class="newsInfo-container">
         <h3 class="title">{{newsInfo.title}}</h3>
         <p class="subtitle">
-            <span>发表时间:{{newsInfo.addTime | dataFormat}}</span>
+            <span>发表时间:{{newsInfo.addTime | dateFormat}}</span>
             <span>点击:{{newsInfo.click}}次</span>
         </p>
         <hr/>
         <div class="newsInfo-content" v-html="newsInfo.content">
 
         </div>
-        <comment></comment>
+        <comment :id="id"></comment>
     </div>
 </template>
 

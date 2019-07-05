@@ -10,9 +10,12 @@ Vue.use(VueRouter)
 Vue.use(VueAxios, axios)
 // axios全局设置
 axios.defaults.baseURL = 'http://localhost:8080/'
+axios.defaults.headers = {
+    'Content-type': 'application/x-www-form-urlencoded'
+}
 
 // vue过滤器
-Vue.filter('dataFormat', (data, pattern = 'YYYY-MM-DD HH:mm:ss') => {
+Vue.filter('dateFormat', (data, pattern = 'YYYY-MM-DD HH:mm:ss') => {
     return moment(data).format(pattern)
 })
 
