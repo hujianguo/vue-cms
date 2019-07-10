@@ -10,8 +10,13 @@
       {
         "libraryName": "mint-ui",
         "style": true
-      },
-      "mint-ui"
+      }
+    ],
+    [
+      "@babel/plugin-transform-modules-commonjs",
+      {
+        "strictMode": false
+      }
     ]
   ]
 }

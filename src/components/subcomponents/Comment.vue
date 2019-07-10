@@ -21,7 +21,6 @@
 </template>
 
 <script>
-    import {Toast} from 'mint-ui'
 
     export default {
         data() {
@@ -46,7 +45,7 @@
 
                         this.pageCount = data.pageCount
                     } else {
-                        Toast({
+                        this.$toast({
                             message: '加载失败',
                             position: 'middle',
                             duration: 3000,
@@ -60,7 +59,7 @@
                     this.pageIndex++
                     this.getComment()
                 } else {
-                    Toast({
+                    this.$toast({
                         message: '已到最后一页',
                         position: 'middle',
                         duration: 3000,
@@ -71,7 +70,7 @@
             addComment() {
                 let content = this.content.trim()
                 if (content === '') {
-                    return Toast({
+                    return this.$toast({
                         message: '评论不能为空',
                         position: 'middle',
                         duration: 3000,
@@ -79,7 +78,7 @@
                     })
                 }
 
-                this.$http.post('vue-cms/addComment/' + this.id + '?content=' + content)
+                this.$http.post('vue-cms/addComment/' + this.id, {content: this.content})
                     .then(response => {
                         let data = response.data
                         if (data.status === '0') {

@@ -14,7 +14,6 @@
 </template>
 
 <script>
-    import {Toast} from 'mint-ui'
     import comment from '../subcomponents/Comment.vue'
 
     export default {
@@ -34,7 +33,7 @@
                     if (data.status === '0') {
                         this.newsInfo = data.message
                     } else {
-                        Toast({
+                        this.$toast({
                             message: '加载失败',
                             position: 'middle',
                             duration: 3000,

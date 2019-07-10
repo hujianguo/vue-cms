@@ -19,7 +19,6 @@
 </template>
 
 <script>
-    import {Toast} from 'mint-ui'
 
     export default {
         data() {
@@ -37,7 +36,7 @@
                     if (data.status === '0') {
                         this.newsList = data.message
                     } else {
-                        Toast({
+                        this.$toast({
                             message: '加载失败',
                             position: 'middle',
                             duration: 3000,

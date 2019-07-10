@@ -1,10 +1,9 @@
 <template>
     <div>
-        <mt-swipe :auto="4000">
-            <mt-swipe-item v-for="item in lunbotuList" :key="item.url">
-                <img :src="item.img"/>
-            </mt-swipe-item>
-        </mt-swipe>
+
+        <swipe :lunbotuList="lunbotuList" :isFull=true></swipe>
+
+
         <ul class="mui-table-view mui-grid-view mui-grid-9">
             <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
                 <router-link to="/home/newsList">
@@ -13,16 +12,16 @@
                 </router-link>
             </li>
             <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-                <a href="#">
+                <router-link to="/home/photoList">
                     <img src="../../images/menu2.png"/>
                     <div class="mui-media-body">图片分享</div>
-                </a>
+                </router-link>
             </li>
             <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-                <a href="#">
+                <router-link to="/home/goodsList">
                     <img src="../../images/menu3.png"/>
                     <div class="mui-media-body">商品购买</div>
-                </a>
+                </router-link>
             </li>
             <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
                 <a href="#">
@@ -48,11 +47,12 @@
 
 <script>
     import {Toast} from 'mint-ui'
+    import swipe from '../subcomponents/Swipe.vue'
 
     export default {
         data() {
             return {
-                lunbotuList: null
+                lunbotuList: []
             }
         },
         created() {
@@ -74,30 +74,15 @@
                     }
                 })
             }
+        },
+        components:{
+            swipe
         }
     }
 </script>
 
 <style scoped lang="scss">
-    .mint-swipe {
-        height: 200px;
-        .mint-swipe-item {
-            &:nth-child(1) {
-                background-color: red;
-            }
-            &:nth-child(2) {
-                background-color: blue;
-            }
-            &:nth-child(3) {
-                background-color: yellow;
-            }
 
-            img {
-                height: 100%;
-                width: 100%;
-            }
-        }
-    }
 
     .mui-grid-view.mui-grid-9 {
         background-color: #fff;
