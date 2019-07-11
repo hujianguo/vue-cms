@@ -39,7 +39,7 @@ Vue.filter('dateFormat', (data, pattern = 'YYYY-MM-DD HH:mm:ss') => {
 import './lib/mui/css/mui.min.css'
 import './lib/mui/css/icons-extra.css'
 // 导入bootstrap样式
-import 'bootstrap/dist/css/bootstrap.min.css'
+//import 'bootstrap/dist/css/bootstrap.min.css'
 // 导入mint-ui样式
 import 'mint-ui/lib/style.css'
 
@@ -48,6 +48,7 @@ Vue.use(MintUI)
 // 使用图片缩略图组件
 Vue.use(VuePreview)
 
+import store from './store/store.js'
 
 // 导入router
 import router from './router.js'
@@ -57,5 +58,6 @@ import app from './App.vue'
 var vm = new Vue({
     el: '#app',
     render: c => c(app),
-    router
+    router,
+    store
 })

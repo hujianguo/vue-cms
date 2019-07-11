@@ -51,7 +51,9 @@
 
 <script>
     import swipe from '../subcomponents/Swipe.vue'
-    import numbox from "../subcomponents/Numbox.vue";
+    import numbox from "../subcomponents/Numbox.vue"
+    import {mapActions} from 'vuex'
+    import {ADD2CAR} from '../../store/car/types.js'
 
     export default {
         data() {
@@ -68,6 +70,7 @@
             this.getGoodsInfo()
         },
         methods: {
+            ...mapActions('car',[ADD2CAR]),
             getLunbotu() {
                 this.$http.get('vue-cms/getThumbs/' + this.id).then(response => {
                     let data = response.data
@@ -98,6 +101,10 @@
             },
             addToShopCar() {
                 this.ballFlag = !this.ballFlag
+
+                let car = {id:this.id,count:this.selectedCount,price:this.goodsInfo.sell_price,selected:true}
+                this[ADD2CAR](car)
+
             },
             beforeEnter(el) {
                 el.style.transform = "translate(0,0)"

@@ -1,6 +1,10 @@
 <template>
     <div class="app-container">
-        <mt-header fixed title="vue项目"></mt-header>
+        <mt-header fixed title="vue项目">
+            <span slot="left" @click="goBack" v-show="flag">
+                <mt-button icon="back">返回</mt-button>
+            </span>
+        </mt-header>
 
         <transition model="out-in">
             <router-view></router-view>
@@ -17,7 +21,7 @@
             </router-link>
             <router-link class="mui-tab-item-llb" to="/shop-cart">
                 <span class="mui-icon mui-icon-extra mui-icon-extra-cart">
-                    <span class="mui-badge" id="badge">0</span>
+                    <span class="mui-badge" id="badge">{{allCount}}</span>
                 </span>
                 <span class="mui-tab-label">购物车</span>
             </router-link>
@@ -31,6 +35,35 @@
 </template>
 
 <script>
+    import {mapGetters} from 'vuex'
+
+    export default {
+        data() {
+            return {
+                flag: false
+            }
+        },
+        created() {
+            this.flag = this.$route.path === '/home' ? false : true
+        },
+        computed: {
+            ...mapGetters('car', ['allCount'])
+        },
+        methods: {
+            goBack() {
+                this.$router.go(-1)
+            }
+        },
+        watch: {
+            "$route.path": function (newVal) {
+                if (newVal === '/home') {
+                    this.flag = false
+                } else {
+                    this.flag = true
+                }
+            }
+        }
+    }
 
 </script>
 
@@ -82,7 +115,7 @@
         padding-bottom: 0;
     }
 
-    .mui-bar-tab .mui-tab-item-llb .mui-icon~.mui-tab-label {
+    .mui-bar-tab .mui-tab-item-llb .mui-icon ~ .mui-tab-label {
         font-size: 11px;
         display: block;
         overflow: hidden;
